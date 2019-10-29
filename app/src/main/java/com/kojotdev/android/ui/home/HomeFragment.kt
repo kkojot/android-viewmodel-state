@@ -30,8 +30,11 @@ class HomeFragment : Fragment() {
 
         val nameText: TextView = root.findViewById(R.id.name_text)
         val setNameButton: Button = root.findViewById(R.id.set_name_button)
+        homeViewModel.name.observe(this, Observer { name ->
+            nameText.text = name
+        })
         setNameButton.setOnClickListener { button ->
-            nameText.text = "Roman"
+            homeViewModel.setName("Roman")
         }
         return root
     }
